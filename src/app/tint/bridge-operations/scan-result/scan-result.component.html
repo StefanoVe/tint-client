@@ -1,1 +1,12 @@
-<p>scan-result works!</p>
+<ng-container *ngIf="scanResult$ | async as result">
+  {{ result | json }}
+  <div *ngFor="let bridge of result" class="mx-5">
+    <rounded-btn
+      color="purple"
+      value="{{
+        bridge.internalipaddress
+      }} <div><i class='fas fa-plug'> </i> Pair to this bridge</div>"
+      (click)="connect(bridge.internalipaddress)"
+    ></rounded-btn>
+  </div>
+</ng-container>
